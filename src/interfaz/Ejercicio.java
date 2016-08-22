@@ -5,6 +5,8 @@
  */
 package interfaz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author jaime
@@ -150,11 +152,46 @@ public class Ejercicio extends javax.swing.JFrame {
 
     private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
 
-      
+       
+
+        if(txtSueldo.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Digite el sueldo base","ERROR",JOptionPane.ERROR_MESSAGE);
+            txtSueldo.requestFocusInWindow();
+        }else{
+           double sueldo=Double.parseDouble(txtSueldo.getText());
+
+            double p1=(1*sueldo)/100;
+            double p2=(4*sueldo)/100;
+            double p3=(0.5*sueldo)/100;
+            double p4=(5*sueldo)/100;
+
+            double dest=p1+p2+p3+p4;
+
+            double montofinal=sueldo-dest;
+
+            lblPor1.setText(""+p1);
+            lblPor2.setText(""+p2);
+            lblPor3.setText(""+p3);
+            lblPor4.setText(""+p4);
+
+            lblDescuentoTotal.setText(""+dest);
+            lblMontoFinal.setText(""+montofinal);
+        }
+
+
     }//GEN-LAST:event_cmdCalcularActionPerformed
 
     private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
 
+        txtSueldo.setText("");
+        lblDescuentoTotal.setText("");
+        lblMontoFinal.setText("");
+        lblPor1.setText("");
+        lblPor2.setText("");
+        lblPor3.setText("");
+        lblPor4.setText("");
+
+        txtSueldo.requestFocusInWindow();
     }//GEN-LAST:event_cmdBorrarActionPerformed
 
     private void lblPor3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblPor3ActionPerformed
